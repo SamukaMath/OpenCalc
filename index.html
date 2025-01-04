@@ -103,15 +103,7 @@
 									</div>
 								</div>
 							</section>
-							<section>
-								<h2>Envie sua contribuição</h2>
-								<div class="upload-container">
-									<label class="upload-label" for="file-upload">Selecione um arquivo</label>
-									<input id="file-upload" type="file" accept=".pdf, .tex, .docx">
-									<p>Formatos permitidos: .pdf, .tex ou .docx</p>
-									<button onclick="uploadFile()">Enviar arquivo</button>
-								</div>
-							</section>
+							
 
 						</div>
 					</div>
@@ -185,34 +177,5 @@
 		<script src="assets/js/PDF.js"></script>
 		<script src="assets/js/paginacao.js"></script>
 		
-		<script>
-			async function uploadFile() {
-            const fileInput = document.getElementById("file-upload");
-            const file = fileInput.files[0];
-
-            if (!file) {
-                alert("Selecione um arquivo primeiro!");
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append("file", file);
-
-            try {
-                const response = await fetch("http://localhost:3000/upload", {
-                    method: "POST",
-                    body: formData,
-                });
-
-                const result = await response.json();
-                alert(result.message || "Arquivo enviado com sucesso!");
-            } catch (error) {
-                alert("Erro ao enviar o arquivo!");
-                console.error(error);
-            }
-        }
-		</script>
-
-<script src="assets/js/upload.js"></script>
 </body>
 </html>
