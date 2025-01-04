@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 
-<html>
+<html lang="pt-br">
 	<head>
 		<title>TLASDA - Lic. em Matemática</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="icon" href="assets/LOGOTLASDA.ico" type="image/x-icon" />
 		 <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
@@ -55,7 +55,7 @@
 							<section>
 								<h2>Sobre</h2>
 								<div class="logo-center">
-									<img src="assets/LOGOTLASDA.png" width="200px">
+									<img src="assets/LOGOTLASDA.png" width="200px" alt="TLASDA" />
 								</div>
 								<p><b>TLASDA</b> é um projeto de escrita colaborativa de livros e artigos de código abertos sobre tópicos de matemática e suas aplicações.</p>
 								<p>Nossa meta é estimular o crescimento de recursos educacionais por meio da cooperação entre docentes e estudantes de instituições acadêmicas, centros de ensino e outros indivíduos interessados na exploração e aplicação da matemática em diversas áreas da ciência e tecnologia.</p>
@@ -66,8 +66,8 @@
 						</div>
 						<div class="col-4 col-12-medium">
 
-							<section>
-								<h2>Recursos disponíveis</h2>
+							<!-- <section id="contentSection">
+								<h2>Livros disponíveis</h2>
 								<ul class="small-image-list">
 									<li>
 									<a class="" href="#">Calculo 1</a>
@@ -86,6 +86,9 @@
 									</li>
 								</ul>
 							</section>
+							<div class="pagination">
+							
+							</div> -->
 
 							<section>
 								<h2>Repositório GitHub</h2>
@@ -94,9 +97,19 @@
 										<div class="col-6 col-12-small">
 											<ul class="link-list">
 												<li><a href="#">Link do repositorio</a></li>
+												
 										</div>
 										
 									</div>
+								</div>
+							</section>
+							<section>
+								<h2>Envie sua contribuição</h2>
+								<div class="upload-container">
+									<label class="upload-label" for="file-upload">Selecione um arquivo</label>
+									<input id="file-upload" type="file" accept=".pdf, .tex, .docx">
+									<p>Formatos permitidos: .pdf, .tex ou .docx</p>
+									<button onclick="uploadFile()">Enviar arquivo</button>
 								</div>
 							</section>
 
@@ -170,6 +183,36 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script src="assets/js/PDF.js"></script>
+		<script src="assets/js/paginacao.js"></script>
+		
+		<script>
+			async function uploadFile() {
+            const fileInput = document.getElementById("file-upload");
+            const file = fileInput.files[0];
 
+            if (!file) {
+                alert("Selecione um arquivo primeiro!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            try {
+                const response = await fetch("http://localhost:3000/upload", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                const result = await response.json();
+                alert(result.message || "Arquivo enviado com sucesso!");
+            } catch (error) {
+                alert("Erro ao enviar o arquivo!");
+                console.error(error);
+            }
+        }
+		</script>
+
+<script src="assets/js/upload.js"></script>
 </body>
 </html>

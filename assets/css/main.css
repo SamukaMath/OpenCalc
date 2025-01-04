@@ -54,6 +54,67 @@ body {
 	-webkit-text-size-adjust: none;
 }
 
+.upload-container {
+	width: 300px;
+	margin: 20px auto;
+	padding: 20px;
+	border: 2px dashed #007BFF;
+	border-radius: 10px;
+	text-align: center;
+	font-family: Arial, sans-serif;
+}
+
+.upload-container:hover {
+	background-color: #f9f9f9;
+}
+
+.upload-container input[type="file"] {
+	display: none;
+}
+
+.upload-label {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #007BFF;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.upload-label:hover {
+	background-color: #0056b3;
+}
+
+.pagination {
+	display: inline-block;
+	margin: 20px 0;
+}
+.pagination a {
+	color: #007bff;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	border: 1px solid #ddd;
+	margin: 0 5px;
+	transition: background-color 0.3s;
+}
+.pagination a:hover {
+	background-color: #007bff;
+	color: white;
+}
+.pagination a.active {
+	background-color: #007bff;
+	color: white;
+	border: 1px solid #007bff;
+}
+#contentSection li {
+	display: none; /* Oculta todos os itens inicialmente */
+	list-style-type: none;
+}
+#contentSection li.active {
+	display: block; /* Exibe apenas os itens ativos */
+}
+
 mark {
 	background-color: transparent;
 	color: inherit;
